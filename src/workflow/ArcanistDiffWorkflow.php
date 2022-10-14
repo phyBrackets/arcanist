@@ -2361,6 +2361,9 @@ EOTEXT
 
     // If we track an upstream branch either directly or indirectly, use that.
     $branch = $api->getBranchName();
+    if (is_null($branch)) {
+       $branch = '';
+    }
     if (strlen($branch)) {
       $upstream_path = $api->getPathToUpstream($branch);
       $remote_branch = $upstream_path->getRemoteBranchName();
