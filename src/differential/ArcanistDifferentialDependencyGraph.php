@@ -42,7 +42,8 @@ final class ArcanistDifferentialDependencyGraph extends AbstractDirectedGraph {
     $edges = array();
     foreach ($dependencies as $dependency) {
       $dependency_revision = $this->getCommitHashFromDict($dependency);
-      if ($repository_api->hasLocalCommit($dependency_revision)) {
+      if (phutil_nonempty_string($dependency_revision) &&
+          $repository_api->hasLocalCommit($dependency_revision)) {
         $edges[$dependency['phid']] = array();
         continue;
       }
