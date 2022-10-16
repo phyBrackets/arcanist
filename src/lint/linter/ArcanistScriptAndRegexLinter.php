@@ -338,7 +338,7 @@ final class ArcanistScriptAndRegexLinter extends ArcanistLinter {
     }
 
     $line = idx($match, 'line');
-    if (strlen($line)) {
+    if (phutil_nonempty_string($line) && strlen($line)) {
       $line = (int)$line;
       if (!$line) {
         $line = 1;
